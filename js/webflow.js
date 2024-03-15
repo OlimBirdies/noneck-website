@@ -7,33 +7,6 @@
  *   Webflow.push(readyFunction);
  */
 
-for (let i = 0; i < 10; i++) {
-    let square = document.createElement('div');
-    square.className = 'redSquare';
-    document.body.appendChild(square);
-    moveSquare(square);
-}
-function moveSquare(square) {
-    var vw = Math.max(document.documentElement.clientWidth || 0, window.innerWidth || 0);
-    var vh = Math.max(document.documentElement.clientHeight || 0, window.innerHeight || 0);
-    var startSide = Math.random() < 0.5 ? 'horizontal' : 'vertical';
-    var endSide = startSide === 'horizontal' ? 'vertical' : 'horizontal';
-    var startPos = startSide === 'horizontal'
-        ? { x: Math.random() < 0.5 ? -50 : vw + 50, y: Math.random() * vh }
-        : { x: Math.random() * vw, y: Math.random() < 0.5 ? -50 : vh + 50 };
-    var endPos = endSide === 'horizontal'
-        ? { x: Math.random() < 0.5 ? -50 : vw + 50, y: Math.random() * vh }
-        : { x: Math.random() * vw, y: Math.random() < 0.5 ? -50 : vh + 50 };
-    var rotation = Math.random() * 360 * 5;
-    square.style.left = startPos.x + 'px';
-    square.style.top = startPos.y + 'px';
-    square.animate([{ transform: `translate(${endPos.x - startPos.x}px, ${endPos.y - startPos.y}px) rotate(${rotation}deg)` }], {
-        duration: 2000 + Math.random() * 1000,
-        easing: 'linear',
-        fill: 'forwards'
-    }).onfinish = function () {moveSquare(square)};
-}
-
 (() => {
   var __create = Object.create;
   var __defProp = Object.defineProperty;
